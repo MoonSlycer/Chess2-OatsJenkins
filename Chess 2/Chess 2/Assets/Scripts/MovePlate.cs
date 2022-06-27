@@ -18,7 +18,7 @@ public class MovePlate : MonoBehaviour
     {
         if(attack)
         {
-            gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 0f, 0f, 0.2980392f);
+            gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 0f, 0f, 0.1f);
         }
     }
 
