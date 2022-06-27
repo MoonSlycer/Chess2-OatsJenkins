@@ -16,31 +16,31 @@ public class Game : MonoBehaviour
 
     void Start()
     {
-        playerBlack = new GameObject[]
+        playerWhite = new GameObject[]
         {
-            Create("black_rook",0,0), Create("black_monkey",1,0),
-            Create("black_fishie",2,0), Create("black_queen",3,0),
-            Create("black_king",4,0), Create("black_fishie",5,0),
-            Create("black_monkey",6,0), Create("black_rook",7,0),
+            Create("white_rook",0,0), Create("white_monkey",1,0),
+            Create("white_fishie",2,0), Create("white_queen",3,0),
+            Create("white_king",4,0), Create("white_fishie",5,0),
+            Create("white_monkey",6,0), Create("white_rook",7,0),
 
-            Create("black_fishie",0,1), Create("black_fishie",1,1),
-            Create("black_elephant",2,1), Create("black_fishie",3,1),
-            Create("black_fishie",4,1), Create("black_elephant",5,1),
-            Create("black_fishie",6,1), Create("black_fishie",7,1),
+            Create("white_fishie",0,1), Create("white_fishie",1,1),
+            Create("white_elephant",2,1), Create("white_fishie",3,1),
+            Create("white_fishie",4,1), Create("white_elephant",5,1),
+            Create("white_fishie",6,1), Create("white_fishie",7,1),
 
         };
 
-        playerWhite = new GameObject[]
+        playerBlack = new GameObject[]
         {
-            Create("white_rook",0,7), Create("white_monkey",1,7),
-            Create("white_fishie",2,7), Create("white_queen",3,7),
-            Create("white_king",4,7), Create("white_fishie",5,7),
-            Create("white_monkey",6,7), Create("white_rook",7,7),
+            Create("black_rook",0,7), Create("black_monkey",1,7),
+            Create("black_fishie",2,7), Create("black_queen",3,7),
+            Create("black_king",4,7), Create("black_fishie",5,7),
+            Create("black_monkey",6,7), Create("black_rook",7,7),
 
-            Create("white_fishie",0,6), Create("white_fishie",1,6),
-            Create("white_elephant",2,6), Create("white_fishie",3,6),
-            Create("white_fishie",4,6), Create("white_elephant",5,6),
-            Create("white_fishie",6,6), Create("white_fishie",7,6),
+            Create("black_fishie",0,6), Create("black_fishie",1,6),
+            Create("black_elephant",2,6), Create("black_fishie",3,6),
+            Create("black_fishie",4,6), Create("black_elephant",5,6),
+            Create("black_fishie",6,6), Create("black_fishie",7,6),
         };
 
         for (int i = 0; i < playerBlack.Length; i++)
