@@ -22,7 +22,7 @@ public class MovePlate : MonoBehaviour
         }
     }
 
-    public void OnMouseDown()
+    public void OnMouseUp()
     {
         controller = GameObject.FindGameObjectWithTag("GameController");
 
@@ -40,6 +40,8 @@ public class MovePlate : MonoBehaviour
         refrence.GetComponent<Chessman>().SetCoords();
 
         controller.GetComponent<Game>().SetPosition(refrence);
+
+        controller.GetComponent<Game>().NextTurn();
 
         refrence.GetComponent<Chessman>().DestroyMovePlates();
     }
