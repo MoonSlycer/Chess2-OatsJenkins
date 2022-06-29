@@ -10,7 +10,7 @@ public class Chessman : MonoBehaviour
     private int xBoard = -1;
     private int yBoard = -1;
 
-    private string player;
+    public string player;
 
     public Sprite black_queen, black_monkey, black_elephant, black_king, bananaless_black_king, black_rook, black_fishie, black_queenfishie;
     public Sprite white_queen, white_monkey, white_elephant, white_king, bananaless_white_king, white_rook, white_fishie, white_queenfishie;
@@ -118,7 +118,6 @@ public class Chessman : MonoBehaviour
             case "white_elephant":
                 ElephantMovePlate();
                 break;
-            case "black_rook":
             case "white_rook":
                 for (int i = 0; i < 8; i++)
                 {
@@ -162,6 +161,72 @@ public class Chessman : MonoBehaviour
                     RookMovePlate(xBoard + i, yBoard - 6);
                     RookMovePlate(xBoard + i, yBoard - 7);
                 }
+                if (controller.GetComponent<Game>().whitePieceTakenLastTurn == true)
+                {
+                    PointMovePlate(xBoard, yBoard + 1);
+                    PointMovePlate(xBoard, yBoard - 1);
+                    PointMovePlate(xBoard + 1, yBoard);
+                    PointMovePlate(xBoard - 1, yBoard);
+                    PointMovePlate(xBoard, yBoard + 1);
+                    PointMovePlate(xBoard, yBoard - 1);
+                    PointMovePlate(xBoard + 1, yBoard);
+                    PointMovePlate(xBoard - 1, yBoard);
+                }
+                break;
+            case "black_rook":
+                for (int i = 0; i < 8; i++)
+                {
+                    RookMovePlate(xBoard - i, yBoard + 0);
+                    RookMovePlate(xBoard - i, yBoard + 1);
+                    RookMovePlate(xBoard - i, yBoard + 2);
+                    RookMovePlate(xBoard - i, yBoard + 3);
+                    RookMovePlate(xBoard - i, yBoard + 4);
+                    RookMovePlate(xBoard - i, yBoard + 5);
+                    RookMovePlate(xBoard - i, yBoard + 6);
+                    RookMovePlate(xBoard - i, yBoard + 7);
+                }
+                for (int i = 0; i < 8; i++)
+                {
+                    RookMovePlate(xBoard - i, yBoard - 1);
+                    RookMovePlate(xBoard - i, yBoard - 2);
+                    RookMovePlate(xBoard - i, yBoard - 3);
+                    RookMovePlate(xBoard - i, yBoard - 4);
+                    RookMovePlate(xBoard - i, yBoard - 5);
+                    RookMovePlate(xBoard - i, yBoard - 6);
+                    RookMovePlate(xBoard - i, yBoard - 7);
+                }
+                for (int i = 0; i < 8; i++)
+                {
+                    RookMovePlate(xBoard + i, yBoard + 0);
+                    RookMovePlate(xBoard + i, yBoard + 1);
+                    RookMovePlate(xBoard + i, yBoard + 2);
+                    RookMovePlate(xBoard + i, yBoard + 3);
+                    RookMovePlate(xBoard + i, yBoard + 4);
+                    RookMovePlate(xBoard + i, yBoard + 5);
+                    RookMovePlate(xBoard + i, yBoard + 6);
+                    RookMovePlate(xBoard + i, yBoard + 7);
+                }
+                for (int i = 0; i < 8; i++)
+                {
+                    RookMovePlate(xBoard + i, yBoard - 1);
+                    RookMovePlate(xBoard + i, yBoard - 2);
+                    RookMovePlate(xBoard + i, yBoard - 3);
+                    RookMovePlate(xBoard + i, yBoard - 4);
+                    RookMovePlate(xBoard + i, yBoard - 5);
+                    RookMovePlate(xBoard + i, yBoard - 6);
+                    RookMovePlate(xBoard + i, yBoard - 7);
+                }
+                if (controller.GetComponent<Game>().blackPieceTakenLastTurn == true)
+                {
+                    PointMovePlate(xBoard, yBoard + 1);
+                    PointMovePlate(xBoard, yBoard - 1);
+                    PointMovePlate(xBoard + 1, yBoard);
+                    PointMovePlate(xBoard - 1, yBoard);
+                    PointMovePlate(xBoard, yBoard + 1);
+                    PointMovePlate(xBoard, yBoard - 1);
+                    PointMovePlate(xBoard + 1, yBoard);
+                    PointMovePlate(xBoard - 1, yBoard);
+                }
                 break;
 
             case "black_king":
@@ -201,6 +266,7 @@ public class Chessman : MonoBehaviour
 
         if(sc.PositionOnBoard(x, y) && sc.GetPosition(x,y).GetComponent<Chessman>().player != player)
         {
+            MovePlateAttackSpawn(x, y);
             MovePlateAttackSpawn(x, y);
         }
     }

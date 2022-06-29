@@ -12,9 +12,18 @@ public class Game : MonoBehaviour
     private GameObject[] playerBlack = new GameObject[16];
     private GameObject[] playerWhite = new GameObject[16];
 
+    public Sprite white, black, white_won, black_won;
+
     private string currentPlayer = "white";
 
     private bool gameOver = false;
+
+    public Image image;
+
+    public int majorWhitePiecesTaken = 0;
+    public int majorBlackPiecesTaken = 0;
+    public bool whitePieceTakenLastTurn = false;
+    public bool blackPieceTakenLastTurn = false;
 
     void Start()
     {
@@ -101,10 +110,14 @@ public class Game : MonoBehaviour
         if (currentPlayer == "white")
         {
             currentPlayer = "black";
+            image.sprite = black;
+            whitePieceTakenLastTurn = false;
         }
         else
         {
             currentPlayer = "white";
+            image.sprite = white;
+            blackPieceTakenLastTurn = false;
         }
     }
 
@@ -114,12 +127,23 @@ public class Game : MonoBehaviour
         {
             gameOver = false;
             SceneManager.LoadScene("Game");
+            majorBlackPiecesTaken = 0;
+            majorWhitePiecesTaken = 0;
         }
+        if (majorWhitePiecesTaken == 2) Winner("black");
+        if (majorBlackPiecesTaken == 2) Winner("white");
     }
 
     public void Winner(string playerWinner)
     {
         gameOver = true;
-        //display text or smth
+        if(playerWinner == "black")
+        {
+            image.sprite = black_won;
+        }
+        if (playerWinner == "white")
+        {
+            image.sprite = white_won;
+        }
     }
 }

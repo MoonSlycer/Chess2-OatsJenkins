@@ -134,7 +134,6 @@ GameObject:
   - component: {fileID: 251062421}
   - component: {fileID: 251062423}
   - component: {fileID: 251062422}
-  - component: {fileID: 251062424}
   m_Layer: 5
   m_Name: Turn
   m_TagString: Untagged
@@ -157,10 +156,10 @@ RectTransform:
   m_Father: {fileID: 1378852725}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.323, y: 0.84229976}
-  m_AnchorMax: {x: 0.7136437, y: 1}
-  m_AnchoredPosition: {x: -2, y: 0.6750488}
-  m_SizeDelta: {x: 2.6900024, y: -1.3500004}
+  m_AnchorMin: {x: 0.31925002, y: 0.8}
+  m_AnchorMax: {x: 0.7136437, y: 0.9555553}
+  m_AnchoredPosition: {x: 0.15499878, y: -0.2000122}
+  m_SizeDelta: {x: -0.30999756, y: -0.35000038}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &251062422
 MonoBehaviour:
@@ -200,22 +199,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 251062420}
   m_CullTransparentMesh: 1
---- !u!114 &251062424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 251062420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49ae50fa910424605ac2a918aee87854, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 0}
-  white: {fileID: 21300000, guid: 77a4debe7dfd24a838be600ab30b0dad, type: 3}
-  black: {fileID: 21300000, guid: 760d327a50fa842d98c7fd6567b106f1, type: 3}
-  image: {fileID: 251062422}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,7 +252,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.0112834
+  orthographic size: 6.711873
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -412,6 +395,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chesspiece: {fileID: 7148534572764601840, guid: ead2e989ddf374b9e8421d86057cfc50, type: 3}
+  white: {fileID: 21300000, guid: 77a4debe7dfd24a838be600ab30b0dad, type: 3}
+  black: {fileID: 21300000, guid: 760d327a50fa842d98c7fd6567b106f1, type: 3}
+  white_won: {fileID: 21300000, guid: 553a08f91c39b435b9d5daeef128b60e, type: 3}
+  black_won: {fileID: 21300000, guid: 26a5eef0aae2240baa2bfd4ed2ab8893, type: 3}
+  image: {fileID: 251062422}
+  majorWhitePiecesTaken: 0
+  majorBlackPiecesTaken: 0
 --- !u!1 &1378852721
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,7 +450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}

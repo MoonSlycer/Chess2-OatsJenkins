@@ -11,24 +11,41 @@ public class MovePlate : MonoBehaviour
     int matrixX;
     int matrixY;
 
-    //false: movement, true: attacking
     public bool attack = false;
 
     public void Start()
     {
-        if(attack)
+        if (attack)
         {
             gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 0f, 0f, 0.1f);
         }
     }
 
-    public void OnMouseUp()
+    public void OnMouseDown()
     {
         controller = GameObject.FindGameObjectWithTag("GameController");
 
         if (attack)
         {
             GameObject chessPiece = controller.GetComponent<Game>().GetPosition(matrixX, matrixY);
+
+            if (chessPiece.name == "white_king" || chessPiece.name == "white_queen") controller.GetComponent<Game>().majorWhitePiecesTaken++;
+            else
+            {
+                if(chessPiece.GetComponent<Chessman>().player == "white")
+                {
+                    controller.GetComponent<Game>().whitePieceTakenLastTurn = true;
+                }
+            }
+
+            if (chessPiece.name == "black_king" || chessPiece.name == "black_queen") controller.GetComponent<Game>().majorBlackPiecesTaken++;
+            else
+            {
+                if (chessPiece.GetComponent<Chessman>().player == "black")
+                {
+                    controller.GetComponent<Game>().blackPieceTakenLastTurn = true;
+                }
+            }
 
             Destroy(chessPiece);
         }
