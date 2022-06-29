@@ -116,7 +116,10 @@ public class Chessman : MonoBehaviour
 
             case "black_elephant":
             case "white_elephant":
-                ElephantMovePlate();
+                PointMovePlate(xBoard + 2, yBoard + 2);
+                PointMovePlate(xBoard - 2, yBoard - 2);
+                PointMovePlate(xBoard + 2, yBoard - 2);
+                PointMovePlate(xBoard - 2, yBoard + 2);
                 break;
             case "white_rook":
                 for (int i = 0; i < 8; i++)
@@ -163,14 +166,14 @@ public class Chessman : MonoBehaviour
                 }
                 if (controller.GetComponent<Game>().whitePieceTakenLastTurn == true)
                 {
-                    PointMovePlate(xBoard, yBoard + 1);
-                    PointMovePlate(xBoard, yBoard - 1);
-                    PointMovePlate(xBoard + 1, yBoard);
-                    PointMovePlate(xBoard - 1, yBoard);
-                    PointMovePlate(xBoard, yBoard + 1);
-                    PointMovePlate(xBoard, yBoard - 1);
-                    PointMovePlate(xBoard + 1, yBoard);
-                    PointMovePlate(xBoard - 1, yBoard);
+                    RookAttackPlate(xBoard, yBoard + 1);
+                    RookAttackPlate(xBoard, yBoard - 1);
+                    RookAttackPlate(xBoard + 1, yBoard);
+                    RookAttackPlate(xBoard - 1, yBoard);
+                    RookAttackPlate(xBoard, yBoard + 1);
+                    RookAttackPlate(xBoard, yBoard - 1);
+                    RookAttackPlate(xBoard + 1, yBoard);
+                    RookAttackPlate(xBoard - 1, yBoard);
                 }
                 break;
             case "black_rook":
@@ -218,14 +221,15 @@ public class Chessman : MonoBehaviour
                 }
                 if (controller.GetComponent<Game>().blackPieceTakenLastTurn == true)
                 {
-                    PointMovePlate(xBoard, yBoard + 1);
-                    PointMovePlate(xBoard, yBoard - 1);
-                    PointMovePlate(xBoard + 1, yBoard);
-                    PointMovePlate(xBoard - 1, yBoard);
-                    PointMovePlate(xBoard, yBoard + 1);
-                    PointMovePlate(xBoard, yBoard - 1);
-                    PointMovePlate(xBoard + 1, yBoard);
-                    PointMovePlate(xBoard - 1, yBoard);
+                    RookAttackPlate(xBoard, yBoard + 1);
+                    RookAttackPlate(xBoard, yBoard - 1);
+                    RookAttackPlate(xBoard + 1, yBoard);
+                    RookAttackPlate(xBoard - 1, yBoard);
+                    RookAttackPlate(xBoard, yBoard + 1);
+                    RookAttackPlate(xBoard, yBoard - 1);
+                    RookAttackPlate(xBoard + 1, yBoard);
+                    RookAttackPlate(xBoard - 1, yBoard);
+
                 }
                 break;
 
@@ -270,15 +274,6 @@ public class Chessman : MonoBehaviour
             MovePlateAttackSpawn(x, y);
         }
     }
-
-    public void ElephantMovePlate()
-    {
-        PointMovePlate(xBoard + 2, yBoard + 2);
-        PointMovePlate(xBoard - 2, yBoard - 2);
-        PointMovePlate(xBoard + 2, yBoard - 2);
-        PointMovePlate(xBoard - 2, yBoard + 2);
-    }
-
     public void RookMovePlate(int x, int y)
     {
         Game sc = controller.GetComponent<Game>();
@@ -289,6 +284,19 @@ public class Chessman : MonoBehaviour
             if (chessPiece == null)
             {
                 MovePlateSpawn(x, y);
+            }
+        }
+    }
+    public void RookAttackPlate(int x, int y)
+    {
+        Game sc = controller.GetComponent<Game>();
+        if (sc.PositionOnBoard(x, y))
+        {
+            GameObject chessPiece = sc.GetPosition(x, y);
+
+            if (chessPiece.GetComponent<Chessman>().player != player)
+            {
+                MovePlateAttackSpawn(x, y);
             }
         }
     }
@@ -366,7 +374,7 @@ public class Chessman : MonoBehaviour
         x += -3.5f;
         y += -3.5f;
 
-        GameObject mp = Instantiate(movePlate, new Vector3(x, y, 0f), Quaternion.identity);
+        GameObject mp = Instantiate(movePlate, new Vector3(x, y, -1f), Quaternion.identity);
 
         MovePlate mpScript = mp.GetComponent<MovePlate>();
         mpScript.SetRefrence(gameObject);
@@ -383,7 +391,7 @@ public class Chessman : MonoBehaviour
         x += -3.5f;
         y += -3.5f;
 
-        GameObject mp = Instantiate(movePlate, new Vector3(x, y, 0f), Quaternion.identity);
+        GameObject mp = Instantiate(movePlate, new Vector3(x, y, -1f), Quaternion.identity);
 
         MovePlate mpScript = mp.GetComponent<MovePlate>();
         mpScript.attack = true;

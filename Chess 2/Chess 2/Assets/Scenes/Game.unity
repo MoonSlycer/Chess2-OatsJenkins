@@ -402,6 +402,8 @@ MonoBehaviour:
   image: {fileID: 251062422}
   majorWhitePiecesTaken: 0
   majorBlackPiecesTaken: 0
+  whitePieceTakenLastTurn: 0
+  blackPieceTakenLastTurn: 0
 --- !u!1 &1378852721
 GameObject:
   m_ObjectHideFlags: 0

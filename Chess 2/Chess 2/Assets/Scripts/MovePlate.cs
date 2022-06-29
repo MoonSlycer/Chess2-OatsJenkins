@@ -13,11 +13,13 @@ public class MovePlate : MonoBehaviour
 
     public bool attack = false;
 
+    public Sprite attackSprite;
     public void Start()
     {
         if (attack)
         {
-            gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 0f, 0f, 0.1f);
+            gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 0f, 0f, 1f);
+            gameObject.GetComponent<SpriteRenderer>().sprite = attackSprite;
         }
     }
 
