@@ -40,7 +40,7 @@ public class Game : MonoBehaviour
             Create("white_fishie",6,1), Create("white_fishie",7,1),
 
         };
-
+        Create("gray_bear", Random.Range(3, 5), Random.Range(3, 5));
         playerBlack = new GameObject[]
         {
             Create("black_rook",0,7), Create("black_monkey",1,7),

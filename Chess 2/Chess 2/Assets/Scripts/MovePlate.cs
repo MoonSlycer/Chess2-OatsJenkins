@@ -32,23 +32,18 @@ public class MovePlate : MonoBehaviour
             GameObject chessPiece = controller.GetComponent<Game>().GetPosition(matrixX, matrixY);
 
             if (chessPiece.name == "white_king" || chessPiece.name == "white_queen" || chessPiece.name == "bananaless_white_king") controller.GetComponent<Game>().majorWhitePiecesTaken++;
-            else
-            {
+
                 if(chessPiece.GetComponent<Chessman>().player == "white")
                 {
                     controller.GetComponent<Game>().whitePieceTakenLastTurn = true;
                 }
-            }
 
             if (chessPiece.name == "black_king" || chessPiece.name == "black_queen" || chessPiece.name == "bananaless_black_king") controller.GetComponent<Game>().majorBlackPiecesTaken++;
-            else
-            {
+
                 if (chessPiece.GetComponent<Chessman>().player == "black")
                 {
                     controller.GetComponent<Game>().blackPieceTakenLastTurn = true;
                 }
-            }
-
             Destroy(chessPiece);
         }
 
