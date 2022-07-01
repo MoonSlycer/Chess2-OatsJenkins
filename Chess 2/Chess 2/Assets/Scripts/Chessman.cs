@@ -325,8 +325,8 @@ public class Chessman : MonoBehaviour
         if (sc.PositionOnBoard(x, y))
         {
             GameObject chessPiece = sc.GetPosition(x, y);
-
-            if (chessPiece.GetComponent<Chessman>().player != player)
+            if (chessPiece == null) { }
+            else if (chessPiece.GetComponent<Chessman>().player != player)
             {
                 MovePlateAttackSpawn(x, y);
             }
