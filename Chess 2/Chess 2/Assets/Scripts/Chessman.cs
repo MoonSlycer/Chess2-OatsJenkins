@@ -235,6 +235,8 @@ public class Chessman : MonoBehaviour
 
             case "black_king":
             case "white_king":
+            case "bananaless_black_king":
+            case "bananaless_white_king":
                 SurrondMovePlate();
                 break;
 
@@ -251,6 +253,29 @@ public class Chessman : MonoBehaviour
                 FishieMovePlate(xBoard - 1, yBoard - 1);
                 FishieMovePlate(xBoard + 1, yBoard);
                 FishieMovePlate(xBoard - 1, yBoard);
+                break;
+
+            case "black_monkey":
+                OnlyMovePlate(xBoard, yBoard + 1);
+                OnlyMovePlate(xBoard, yBoard - 1);
+                OnlyMovePlate(xBoard + 1, yBoard);
+                OnlyMovePlate(xBoard - 1, yBoard);
+                OnlyMovePlate(xBoard - 1, yBoard + 1);
+                OnlyMovePlate(xBoard - 1, yBoard - 1);
+                OnlyMovePlate(xBoard + 1, yBoard - 1);
+                OnlyMovePlate(xBoard + 1, yBoard + 1);
+                MonkeyMovePlate(xBoard, yBoard);
+                break;
+            case "white_monkey":
+                OnlyMovePlate(xBoard, yBoard + 1);
+                OnlyMovePlate(xBoard, yBoard - 1);
+                OnlyMovePlate(xBoard + 1, yBoard);
+                OnlyMovePlate(xBoard - 1, yBoard);
+                OnlyMovePlate(xBoard - 1, yBoard + 1);
+                OnlyMovePlate(xBoard - 1, yBoard - 1);
+                OnlyMovePlate(xBoard + 1, yBoard - 1);
+                OnlyMovePlate(xBoard + 1, yBoard + 1);
+                MonkeyMovePlate(xBoard, yBoard);
                 break;
         }
     }
@@ -359,6 +384,84 @@ public class Chessman : MonoBehaviour
                 if (sc.PositionOnBoard(xBoard - 1, yBoard - 1) && sc.GetPosition(xBoard - 1, yBoard - 1) != null && sc.GetPosition(xBoard - 1, yBoard - 1).GetComponent<Chessman>().player != player)
                 {
                     MovePlateAttackSpawn(xBoard - 1, yBoard - 1);
+                }
+            }
+        }
+    }
+    public void OnlyMovePlate(int x, int y)
+    {
+        Game sc = controller.GetComponent<Game>();
+        if (sc.PositionOnBoard(x, y))
+        {
+            GameObject chessPiece = sc.GetPosition(x, y);
+
+            if (chessPiece == null)
+            {
+                MovePlateSpawn(x, y);
+            }
+        }
+    }
+    public void MonkeyMovePlate(int x, int y)
+    {
+        Game sc = controller.GetComponent<Game>();
+        if (sc.PositionOnBoard(x, y))
+        {
+            GameObject chessPiece = sc.GetPosition(x, y);
+
+            if (sc.GetPosition(x + 1, y) != null)
+            {
+                if (sc.PositionOnBoard(x + 2, y))
+                {
+                    PointMovePlate(x + 2, y);
+                }
+            }
+            if (sc.GetPosition(x - 1, y) != null)
+            {
+                if (sc.PositionOnBoard(x - 2, y))
+                {
+                    PointMovePlate(x - 2, y);
+                }
+            }
+            if (sc.GetPosition(x, y + 1) != null)
+            {
+                if (sc.PositionOnBoard(x, y + 2))
+                {
+                    PointMovePlate(x, y + 2);
+                }
+            }
+            if (sc.GetPosition(x, y - 1) != null)
+            {
+                if (sc.PositionOnBoard(x, y - 2))
+                {
+                    PointMovePlate(x, y - 2);
+                }
+            }
+            if (sc.GetPosition(x + 1, y + 1) != null)
+            {
+                if (sc.PositionOnBoard(x + 2, y + 2))
+                {
+                    PointMovePlate(x + 2, y + 2);
+                }
+            }
+            if (sc.GetPosition(x - 1, y + 1) != null)
+            {
+                if (sc.PositionOnBoard(x - 2, y + 2))
+                {
+                    PointMovePlate(x - 2, y + 2);
+                }
+            }
+            if (sc.GetPosition(x - 1, y - 1) != null)
+            {
+                if (sc.PositionOnBoard(x - 2, y - 2))
+                {
+                    PointMovePlate(x - 2, y - 2);
+                }
+            }
+            if (sc.GetPosition(x + 1, y - 1) != null)
+            {
+                if (sc.PositionOnBoard(x + 2, y - 2))
+                {
+                    PointMovePlate(x + 2, y - 2);
                 }
             }
         }

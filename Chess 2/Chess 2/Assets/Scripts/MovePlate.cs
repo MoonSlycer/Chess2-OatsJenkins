@@ -31,7 +31,7 @@ public class MovePlate : MonoBehaviour
         {
             GameObject chessPiece = controller.GetComponent<Game>().GetPosition(matrixX, matrixY);
 
-            if (chessPiece.name == "white_king" || chessPiece.name == "white_queen") controller.GetComponent<Game>().majorWhitePiecesTaken++;
+            if (chessPiece.name == "white_king" || chessPiece.name == "white_queen" || chessPiece.name == "bananaless_white_king") controller.GetComponent<Game>().majorWhitePiecesTaken++;
             else
             {
                 if(chessPiece.GetComponent<Chessman>().player == "white")
@@ -40,7 +40,7 @@ public class MovePlate : MonoBehaviour
                 }
             }
 
-            if (chessPiece.name == "black_king" || chessPiece.name == "black_queen") controller.GetComponent<Game>().majorBlackPiecesTaken++;
+            if (chessPiece.name == "black_king" || chessPiece.name == "black_queen" || chessPiece.name == "bananaless_black_king") controller.GetComponent<Game>().majorBlackPiecesTaken++;
             else
             {
                 if (chessPiece.GetComponent<Chessman>().player == "black")
@@ -56,6 +56,18 @@ public class MovePlate : MonoBehaviour
 
         refrence.GetComponent<Chessman>().SetXBoard(matrixX);
         refrence.GetComponent<Chessman>().SetYBoard(matrixY);
+
+        if (matrixY == 7 && refrence.name == "white_fishie")
+        {
+            controller.GetComponent<Game>().Create("white_queenfishie", refrence.GetComponent<Chessman>().GetXBoard(), refrence.GetComponent<Chessman>().GetYBoard());
+            Destroy(refrence);
+        }
+        if (matrixY == 0 && refrence.name == "black_fishie")
+        {
+            controller.GetComponent<Game>().Create("black_queenfishie", refrence.GetComponent<Chessman>().GetXBoard(), refrence.GetComponent<Chessman>().GetYBoard());
+            Destroy(refrence);
+        }
+
         refrence.GetComponent<Chessman>().SetCoords();
 
         controller.GetComponent<Game>().SetPosition(refrence);
