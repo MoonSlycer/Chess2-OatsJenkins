@@ -5,8 +5,8 @@ using UnityEngine;
 public class MovePlate : MonoBehaviour
 {
     public GameObject controller;
-
     GameObject refrence = null;
+    public GameObject majorPieceMarker;
 
     int matrixX;
     int matrixY;
@@ -14,6 +14,7 @@ public class MovePlate : MonoBehaviour
     public bool attack = false;
 
     public Sprite attackSprite;
+    public Sprite white_king, black_king, white_queen, black_queen;
     public void Start()
     {
         if (attack)
@@ -23,7 +24,7 @@ public class MovePlate : MonoBehaviour
         }
     }
 
-    public void OnMouseDown()
+    public void OnMouseUp()
     {
         controller = GameObject.FindGameObjectWithTag("GameController");
 
@@ -33,10 +34,10 @@ public class MovePlate : MonoBehaviour
 
             if (chessPiece.name == "white_king" || chessPiece.name == "white_queen" || chessPiece.name == "bananaless_white_king") controller.GetComponent<Game>().majorWhitePiecesTaken++;
 
-                if(chessPiece.GetComponent<Chessman>().player == "white")
-                {
-                    controller.GetComponent<Game>().whitePieceTakenLastTurn = true;
-                }
+            if (chessPiece.GetComponent<Chessman>().player == "white")
+            {
+                controller.GetComponent<Game>().whitePieceTakenLastTurn = true;
+            }
 
             if (chessPiece.name == "black_king" || chessPiece.name == "black_queen" || chessPiece.name == "bananaless_black_king") controller.GetComponent<Game>().majorBlackPiecesTaken++;
 
@@ -44,6 +45,22 @@ public class MovePlate : MonoBehaviour
                 {
                     controller.GetComponent<Game>().blackPieceTakenLastTurn = true;
                 }
+            if (chessPiece.name == "white_king")
+            {
+                CreateMarker("white_king", 5f, -.5f);
+            }
+            if (chessPiece.name == "black_king")
+            {
+                CreateMarker("black_king", -5f, .5f);
+            }
+            if (chessPiece.name == "white_queen")
+            {
+                CreateMarker("white_queen", 5f, .5f);
+            }
+            if (chessPiece.name == "black_queen")
+            {
+                CreateMarker("black_queen", -5f, -.5f);
+            }
             Destroy(chessPiece);
         }
 
@@ -86,5 +103,15 @@ public class MovePlate : MonoBehaviour
     public GameObject GetRefrence()
     {
         return refrence;
+    }
+    public GameObject CreateMarker(string name, float x, float y)
+    {
+        GameObject obj = Instantiate(majorPieceMarker, new Vector3(x, y, -1), Quaternion.identity);
+        obj.name = name;
+            if (name == "white_king") obj.GetComponent<SpriteRenderer>().sprite = white_king;
+            if (name == "black_king") obj.GetComponent<SpriteRenderer>().sprite = black_king;
+            if (name == "white_queen") obj.GetComponent<SpriteRenderer>().sprite = white_queen;
+            if (name == "black_queen") obj.GetComponent<SpriteRenderer>().sprite = black_queen;
+        return obj;
     }
 }

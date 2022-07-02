@@ -24,7 +24,7 @@ public class Chessman : MonoBehaviour
 
         switch (this.name)
         {
-            case "black_queen": this.GetComponent <SpriteRenderer>().sprite = black_queen; player = "black"; break;
+            case "black_queen": this.GetComponent<SpriteRenderer>().sprite = black_queen; player = "black"; break;
             case "black_monkey": this.GetComponent<SpriteRenderer>().sprite = black_monkey; player = "black"; break;
             case "black_elephant": this.GetComponent<SpriteRenderer>().sprite = black_elephant; player = "black"; break;
             case "black_king": this.GetComponent<SpriteRenderer>().sprite = black_king; player = "black"; break;
@@ -77,7 +77,7 @@ public class Chessman : MonoBehaviour
         yBoard = y;
     }
 
-    private void OnMouseDown()
+    private void OnMouseUp()
     {
         if (!controller.GetComponent<Game>().IsGameOver() && controller.GetComponent<Game>().GetCurrentPlayer() == player)
         {
