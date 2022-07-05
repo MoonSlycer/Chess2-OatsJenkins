@@ -100,6 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
   movePlate: {fileID: 4864381194058367198, guid: 4f139b7af687445958584fa8ea32e31d, type: 3}
+  savePlate: {fileID: 5947942646269466709, guid: 4a5d4d1e28b884c29ab50c9e44f5407a, type: 3}
+  player: 
   black_queen: {fileID: -1466695639, guid: cd36654a839d947668d72a632bfd097a, type: 3}
   black_monkey: {fileID: -65572293, guid: cd36654a839d947668d72a632bfd097a, type: 3}
   black_elephant: {fileID: 12082738, guid: cd36654a839d947668d72a632bfd097a, type: 3}

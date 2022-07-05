@@ -25,6 +25,9 @@ public class Game : MonoBehaviour
     public bool whitePieceTakenLastTurn = false;
     public bool blackPieceTakenLastTurn = false;
 
+    public bool whiteSaveAllowed = false;
+    public bool blackSaveAllowed = false;
+
     void Start()
     {
         playerWhite = new GameObject[]

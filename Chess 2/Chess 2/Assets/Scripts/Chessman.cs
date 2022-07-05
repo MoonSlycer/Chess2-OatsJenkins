@@ -6,6 +6,7 @@ public class Chessman : MonoBehaviour
 {
     public GameObject controller;
     public GameObject movePlate;
+    public GameObject savePlate;
 
     private int xBoard = -1;
     private int yBoard = -1;
@@ -262,6 +263,20 @@ public class Chessman : MonoBehaviour
                 break;
 
             case "black_monkey":
+                MonkeyMovePlate(xBoard, yBoard);
+                OnlyMovePlate(xBoard, yBoard + 1);
+                OnlyMovePlate(xBoard, yBoard - 1);
+                OnlyMovePlate(xBoard + 1, yBoard);
+                OnlyMovePlate(xBoard - 1, yBoard);
+                OnlyMovePlate(xBoard - 1, yBoard + 1);
+                OnlyMovePlate(xBoard - 1, yBoard - 1);
+                OnlyMovePlate(xBoard + 1, yBoard - 1);
+                OnlyMovePlate(xBoard + 1, yBoard + 1);
+                if (controller.GetComponent<Game>().blackSaveAllowed == true)
+                {
+                    SavePlateCheck("black_monkey", -5.06f, 0.5f);
+                }
+                break;
             case  "white_monkey":
                 MonkeyMovePlate(xBoard, yBoard);
                 OnlyMovePlate(xBoard, yBoard + 1);
@@ -272,6 +287,10 @@ public class Chessman : MonoBehaviour
                 OnlyMovePlate(xBoard - 1, yBoard - 1);
                 OnlyMovePlate(xBoard + 1, yBoard - 1);
                 OnlyMovePlate(xBoard + 1, yBoard + 1);
+                if (controller.GetComponent<Game>().whiteSaveAllowed == true)
+                {
+                    SavePlateCheck("white_monkey", 5.09f, -0.5f);
+                }
                 break;
 
             case "gray_bear":
@@ -358,6 +377,26 @@ public class Chessman : MonoBehaviour
             else if (chessPiece.GetComponent<Chessman>().player != player)
             {
                 MovePlateAttackSpawn(x, y);
+            }
+        }
+    }
+    public void SavePlateCheck(string piece, float x, float y)
+    {
+        GameObject chessPieceCheck = null;
+        if (piece == "white_monkey")
+        {
+            chessPieceCheck = controller.GetComponent<Game>().GetPosition(7, 3);
+        }
+        if (piece == "black_monkey")
+        {
+            chessPieceCheck = controller.GetComponent<Game>().GetPosition(0, 4);
+        }
+
+        if (chessPieceCheck != null)
+        {
+            if (chessPieceCheck.name == piece)
+            {
+                Instantiate(savePlate, new Vector3(x, y, -1f), Quaternion.identity);
             }
         }
     }

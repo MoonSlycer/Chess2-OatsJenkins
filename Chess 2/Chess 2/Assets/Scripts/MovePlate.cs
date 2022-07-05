@@ -48,10 +48,12 @@ public class MovePlate : MonoBehaviour
             if (chessPiece.name == "white_king")
             {
                 CreateMarker("white_king", 5f, -.5f);
+                controller.GetComponent<Game>().whiteSaveAllowed = true;
             }
             if (chessPiece.name == "black_king")
             {
                 CreateMarker("black_king", -5f, .5f);
+                controller.GetComponent<Game>().blackSaveAllowed = true;
             }
             if (chessPiece.name == "white_queen")
             {
@@ -60,6 +62,16 @@ public class MovePlate : MonoBehaviour
             if (chessPiece.name == "black_queen")
             {
                 CreateMarker("black_queen", -5f, -.5f);
+            }
+            if (chessPiece.name == "bananaless_white_king")
+            {
+                CreateMarker("bananaless_white_king", 5f, -.5f);
+                controller.GetComponent<Game>().whiteSaveAllowed = false;
+            }
+            if (chessPiece.name == "bananaless_black_king")
+            {
+                CreateMarker("bananaless_black_king", -5f, .5f);
+                controller.GetComponent<Game>().blackSaveAllowed = false;
             }
             Destroy(chessPiece);
         }
