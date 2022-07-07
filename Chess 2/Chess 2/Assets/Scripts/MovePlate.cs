@@ -18,7 +18,6 @@ public class MovePlate : MonoBehaviour
     public Sprite attackSprite;
     public Sprite white_king, black_king, white_queen, black_queen, bananaless_white_king, bananaless_black_king;
 
-    public AudioSource audioSource;
     public AudioClip dunk;
     public AudioClip donk;
     public AudioClip dink;
@@ -89,30 +88,43 @@ public class MovePlate : MonoBehaviour
             }
             Destroy(chessPiece);
         }
-
-        controller.GetComponent<Game>().SetPositionEmpty(refrence.GetComponent<Chessman>().GetXBoard(), refrence.GetComponent<Chessman>().GetYBoard());
-
-        refrence.GetComponent<Chessman>().SetXBoard(matrixX);
-        refrence.GetComponent<Chessman>().SetYBoard(matrixY);
-
-        if (matrixY == 7 && refrence.name == "white_fishie")
+        if (refrence.name == "StarterBear")
         {
-            controller.GetComponent<Game>().Create("white_queenfishie", refrence.GetComponent<Chessman>().GetXBoard(), refrence.GetComponent<Chessman>().GetYBoard());
+            controller.GetComponent<Game>().Create("gray_bear", matrixX, matrixY);
             Destroy(refrence);
+            controller.GetComponent<Game>().NextTurn();
+            GameObject[] movePlates = GameObject.FindGameObjectsWithTag("MovePlate");
+            for (int i = 0; i < movePlates.Length; i++)
+            {
+                Destroy(movePlates[i]);
+            }
         }
-        if (matrixY == 0 && refrence.name == "black_fishie")
+        else
         {
-            controller.GetComponent<Game>().Create("black_queenfishie", refrence.GetComponent<Chessman>().GetXBoard(), refrence.GetComponent<Chessman>().GetYBoard());
-            Destroy(refrence);
+            controller.GetComponent<Game>().SetPositionEmpty(refrence.GetComponent<Chessman>().GetXBoard(), refrence.GetComponent<Chessman>().GetYBoard());
+
+            refrence.GetComponent<Chessman>().SetXBoard(matrixX);
+            refrence.GetComponent<Chessman>().SetYBoard(matrixY);
+
+            if (matrixY == 7 && refrence.name == "white_fishie")
+            {
+                controller.GetComponent<Game>().Create("white_queenfishie", refrence.GetComponent<Chessman>().GetXBoard(), refrence.GetComponent<Chessman>().GetYBoard());
+                Destroy(refrence);
+            }
+            if (matrixY == 0 && refrence.name == "black_fishie")
+            {
+                controller.GetComponent<Game>().Create("black_queenfishie", refrence.GetComponent<Chessman>().GetXBoard(), refrence.GetComponent<Chessman>().GetYBoard());
+                Destroy(refrence);
+            }
+
+            refrence.GetComponent<Chessman>().SetCoords();
+
+            controller.GetComponent<Game>().SetPosition(refrence);
+
+            controller.GetComponent<Game>().NextTurn();
+
+            refrence.GetComponent<Chessman>().DestroyMovePlates();
         }
-
-        refrence.GetComponent<Chessman>().SetCoords();
-
-        controller.GetComponent<Game>().SetPosition(refrence);
-
-        controller.GetComponent<Game>().NextTurn();
-
-        refrence.GetComponent<Chessman>().DestroyMovePlates();
     }
 
     public void SetCoords(int x, int y)

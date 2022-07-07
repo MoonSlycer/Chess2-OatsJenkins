@@ -49,6 +49,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
   transform: {fileID: 5947942646269466705}
+  board: {fileID: 0}
+  dunk: {fileID: 8300000, guid: c7813144ac1b84b57942863444a54259, type: 3}
+  donk: {fileID: 8300000, guid: e65b421f5e24f4581a018cbb3224c22c, type: 3}
+  dink: {fileID: 8300000, guid: 98330b71e596246fdb787dddb9a3da13, type: 3}
 --- !u!212 &5947942646269466711
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -89,7 +93,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: d2af4892228e4422c90b1a301beb2dc8, type: 3}
   m_Color: {r: 1, g: 1, b: 0, a: 1}
   m_FlipX: 0

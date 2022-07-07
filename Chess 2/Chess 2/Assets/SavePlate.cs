@@ -6,16 +6,25 @@ public class SavePlate : MonoBehaviour
 {
     public GameObject controller;
     public Transform transform;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject board;
+
+    public AudioClip dunk;
+    public AudioClip donk;
+    public AudioClip dink;
+
+    int noiseValue;
     public void OnMouseUp()
     {
         controller = GameObject.FindGameObjectWithTag("GameController");
+        board = GameObject.FindGameObjectWithTag("Board");
 
-        if(transform.position == new Vector3(-5.06f, 0.5f, transform.position.z))
+        noiseValue = Random.Range(1, 4);
+
+        if (noiseValue == 1) { board.GetComponent<AudioSource>().PlayOneShot(dunk, 1); }
+        if (noiseValue == 2) { board.GetComponent<AudioSource>().PlayOneShot(donk, 1); }
+        if (noiseValue == 3) { board.GetComponent<AudioSource>().PlayOneShot(dink, 1); }
+
+        if (transform.position == new Vector3(-5.06f, 0.5f, transform.position.z))
         {
             Destroy(GameObject.Find("black_king"));
             controller.GetComponent<Game>().blackSaveAllowed = false;
