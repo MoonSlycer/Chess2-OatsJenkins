@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
+  board: {fileID: 0}
   majorPieceMarker: {fileID: 6437334149186360181, guid: 57fd5523fd1d84ad585acd63662e1fac, type: 3}
   attack: 0
   attackSprite: {fileID: 21300000, guid: d2af4892228e4422c90b1a301beb2dc8, type: 3}
@@ -107,6 +108,12 @@ MonoBehaviour:
   black_king: {fileID: 1551366480, guid: e94028ffcf57641b690cda77a24ee013, type: 3}
   white_queen: {fileID: -1032100324, guid: 1d1061dd6114642f0842de7b236e187c, type: 3}
   black_queen: {fileID: -1466695639, guid: cd36654a839d947668d72a632bfd097a, type: 3}
+  bananaless_white_king: {fileID: 571620008, guid: 1d1061dd6114642f0842de7b236e187c, type: 3}
+  bananaless_black_king: {fileID: -1445977998, guid: cd36654a839d947668d72a632bfd097a, type: 3}
+  audioSource: {fileID: 1399785107355549338, guid: 9e9edb7fb6e3541308df0d9df8792efe, type: 3}
+  dunk: {fileID: 8300000, guid: c7813144ac1b84b57942863444a54259, type: 3}
+  donk: {fileID: 8300000, guid: e65b421f5e24f4581a018cbb3224c22c, type: 3}
+  dink: {fileID: 8300000, guid: 98330b71e596246fdb787dddb9a3da13, type: 3}
 --- !u!61 &3881297272064320878
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -19,6 +19,7 @@ public class Game : MonoBehaviour
     private bool gameOver = false;
 
     public Image image;
+    public Image button;
 
     public int majorWhitePiecesTaken = 0;
     public int majorBlackPiecesTaken = 0;
@@ -128,12 +129,9 @@ public class Game : MonoBehaviour
 
     public void Update()
     {
-        if (gameOver == true && Input.GetMouseButtonDown(0))
+        if (gameOver == true)
         {
-            gameOver = false;
-            SceneManager.LoadScene("Game");
-            majorBlackPiecesTaken = 0;
-            majorWhitePiecesTaken = 0;
+            button.enabled = true;
         }
         if (majorWhitePiecesTaken == 2) Winner("black");
         if (majorBlackPiecesTaken == 2) Winner("white");
@@ -150,5 +148,15 @@ public class Game : MonoBehaviour
         {
             image.sprite = white_won;
         }
+    }
+    public void Restart()
+    {
+        gameOver = false;
+        SceneManager.LoadScene("Game");
+        majorBlackPiecesTaken = 0;
+        majorWhitePiecesTaken = 0;
+
+        if (majorWhitePiecesTaken == 2) Winner("black");
+        if (majorBlackPiecesTaken == 2) Winner("white");
     }
 }

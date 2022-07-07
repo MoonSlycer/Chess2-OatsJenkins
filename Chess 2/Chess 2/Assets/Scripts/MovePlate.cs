@@ -5,6 +5,7 @@ using UnityEngine;
 public class MovePlate : MonoBehaviour
 {
     public GameObject controller;
+    public GameObject board;
     GameObject refrence = null;
     public GameObject majorPieceMarker;
 
@@ -12,9 +13,15 @@ public class MovePlate : MonoBehaviour
     int matrixY;
 
     public bool attack = false;
+    int noiseValue;
 
     public Sprite attackSprite;
-    public Sprite white_king, black_king, white_queen, black_queen;
+    public Sprite white_king, black_king, white_queen, black_queen, bananaless_white_king, bananaless_black_king;
+
+    public AudioSource audioSource;
+    public AudioClip dunk;
+    public AudioClip donk;
+    public AudioClip dink;
     public void Start()
     {
         if (attack)
@@ -27,6 +34,13 @@ public class MovePlate : MonoBehaviour
     public void OnMouseUp()
     {
         controller = GameObject.FindGameObjectWithTag("GameController");
+        board = GameObject.FindGameObjectWithTag("Board");
+
+        noiseValue = Random.Range(1, 4);
+
+        if (noiseValue == 1) { board.GetComponent<AudioSource>().PlayOneShot(dunk, 1); }
+        if (noiseValue == 2) { board.GetComponent<AudioSource>().PlayOneShot(donk, 1); }
+        if (noiseValue == 3) { board.GetComponent<AudioSource>().PlayOneShot(dink, 1); }
 
         if (attack)
         {
@@ -124,6 +138,8 @@ public class MovePlate : MonoBehaviour
             if (name == "black_king") obj.GetComponent<SpriteRenderer>().sprite = black_king;
             if (name == "white_queen") obj.GetComponent<SpriteRenderer>().sprite = white_queen;
             if (name == "black_queen") obj.GetComponent<SpriteRenderer>().sprite = black_queen;
+            if (name == "bananaless_white_king") obj.GetComponent<SpriteRenderer>().sprite = bananaless_white_king;
+            if (name == "bananaless_black_king") obj.GetComponent<SpriteRenderer>().sprite = bananaless_black_king;
         return obj;
     }
 }
