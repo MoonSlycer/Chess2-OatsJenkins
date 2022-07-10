@@ -16,7 +16,10 @@ public class Chessman : MonoBehaviour
     public Sprite black_queen, black_monkey, black_elephant, black_king, bananaless_black_king, black_rook, black_fishie, black_queenfishie;
     public Sprite white_queen, white_monkey, white_elephant, white_king, bananaless_white_king, white_rook, white_fishie, white_queenfishie;
     public Sprite gray_bear;
-
+    public void Start()
+    {
+        Activate();
+    }
     public void Activate()
     {
         controller = GameObject.FindGameObjectWithTag("GameController");
