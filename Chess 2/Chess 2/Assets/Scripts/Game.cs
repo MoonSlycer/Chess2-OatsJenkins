@@ -4,10 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Photon.Pun;
-public class Game : MonoBehaviour
+public class Game : MonoBehaviourPun
 {
-    public GameObject chesspiece;
-
     private GameObject[,] positions = new GameObject[8, 8];
     private GameObject[] playerBlack = new GameObject[16];
     private GameObject[] playerWhite = new GameObject[16];
@@ -31,6 +29,10 @@ public class Game : MonoBehaviour
 
     void Start()
     {
+        image = GameObject.FindGameObjectWithTag("Turn").GetComponent<Image>();
+        button = GameObject.FindGameObjectWithTag("Restart").GetComponent<Image>();
+        if (PhotonNetwork.IsMasterClient)
+        {
             playerWhite = new GameObject[]
             {
                 Create("white_rook",0,0), Create("white_monkey",1,0),
@@ -44,7 +46,7 @@ public class Game : MonoBehaviour
                 Create("white_fishie",6,1), Create("white_fishie",7,1),
 
             };
-
+            PhotonNetwork.InstantiateRoomObject("StarterBear", new Vector3(0, 0, -1), Quaternion.identity);
             playerBlack = new GameObject[]
             {
                 Create("black_rook",0,7), Create("black_monkey",1,7),
@@ -63,12 +65,12 @@ public class Game : MonoBehaviour
                 SetPosition(playerBlack[i]);
                 SetPosition(playerWhite[i]);
             }
+        }
     }
     public GameObject Create(string name, int x, int y)
     {
-        GameObject obj = Instantiate(chesspiece, new Vector3(0, 0, -1), Quaternion.identity);
+        GameObject obj = PhotonNetwork.InstantiateRoomObject(name, new Vector3(0, 0, -1), Quaternion.identity);
         Chessman chessman = obj.GetComponent<Chessman>();
-        chessman.name = name;
         chessman.SetXBoard(x);
         chessman.SetYBoard(y);
         chessman.Activate();

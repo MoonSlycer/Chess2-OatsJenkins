@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7148534572764601840
+--- !u!1 &1962032627954147833
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,41 +8,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 488574921959371844}
-  - component: {fileID: 5435274785890707742}
-  - component: {fileID: 5106090653704025523}
-  - component: {fileID: 6654320194452435470}
-  - component: {fileID: -1483036847535412331}
-  - component: {fileID: 943602415263752141}
+  - component: {fileID: 9136110790851954765}
+  - component: {fileID: 3703016111532561687}
+  - component: {fileID: 4526753637487937978}
+  - component: {fileID: 2618523103375838727}
+  - component: {fileID: 1397534041229711260}
+  - component: {fileID: 8437038102000329668}
   m_Layer: 0
-  m_Name: ChessPiece
+  m_Name: white_fishie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &488574921959371844
+--- !u!4 &9136110790851954765
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7148534572764601840}
+  m_GameObject: {fileID: 1962032627954147833}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.78, y: -1.83, z: 0}
   m_LocalScale: {x: 0.73, y: 0.73, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &5435274785890707742
+--- !u!212 &3703016111532561687
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7148534572764601840}
+  m_GameObject: {fileID: 1962032627954147833}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 571620008, guid: 1d1061dd6114642f0842de7b236e187c, type: 3}
+  m_Sprite: {fileID: 746690782, guid: 1d1061dd6114642f0842de7b236e187c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -88,13 +88,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5106090653704025523
+--- !u!114 &4526753637487937978
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7148534572764601840}
+  m_GameObject: {fileID: 1962032627954147833}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8bde2df3af9e4b01b77ed149418443d, type: 3}
@@ -121,13 +121,13 @@ MonoBehaviour:
   white_fishie: {fileID: 746690782, guid: 1d1061dd6114642f0842de7b236e187c, type: 3}
   white_queenfishie: {fileID: 1942401116, guid: 1d1061dd6114642f0842de7b236e187c, type: 3}
   gray_bear: {fileID: 21300000, guid: 47fe6b99e60804dd2b5f0ddcf18cbbcc, type: 3}
---- !u!61 &6654320194452435470
+--- !u!61 &2618523103375838727
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7148534572764601840}
+  m_GameObject: {fileID: 1962032627954147833}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -147,13 +147,13 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.34, y: 1.34}
   m_EdgeRadius: 0
---- !u!114 &-1483036847535412331
+--- !u!114 &1397534041229711260
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7148534572764601840}
+  m_GameObject: {fileID: 1962032627954147833}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
@@ -180,13 +180,13 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
---- !u!114 &943602415263752141
+--- !u!114 &8437038102000329668
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7148534572764601840}
+  m_GameObject: {fileID: 1962032627954147833}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
@@ -196,10 +196,10 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 2
-  observableSearch: 2
+  OwnershipTransfer: 1
+  observableSearch: 0
   ObservedComponents:
-  - {fileID: -1483036847535412331}
+  - {fileID: 1397534041229711260}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0

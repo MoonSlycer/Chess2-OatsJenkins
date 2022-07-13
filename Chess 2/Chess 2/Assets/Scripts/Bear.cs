@@ -6,9 +6,13 @@ public class Bear : MonoBehaviour
 {
     public GameObject controller;
     public GameObject movePlate;
-    private void OnMouseUp()
+    public GameObject gameObject;
+    public void Awake()
     {
         controller = GameObject.FindGameObjectWithTag("GameController");
+    }
+    private void OnMouseUp()
+    {
         if (!controller.GetComponent<Game>().IsGameOver())
         {
             GameObject[] movePlates = GameObject.FindGameObjectsWithTag("MovePlate");

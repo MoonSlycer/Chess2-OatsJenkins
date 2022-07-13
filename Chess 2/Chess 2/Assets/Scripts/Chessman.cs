@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class Chessman : MonoBehaviour
+public class Chessman : MonoBehaviourPun
 {
     public GameObject controller;
     public GameObject movePlate;
@@ -16,37 +17,36 @@ public class Chessman : MonoBehaviour
     public Sprite black_queen, black_monkey, black_elephant, black_king, bananaless_black_king, black_rook, black_fishie, black_queenfishie;
     public Sprite white_queen, white_monkey, white_elephant, white_king, bananaless_white_king, white_rook, white_fishie, white_queenfishie;
     public Sprite gray_bear;
-    public void Start()
+
+    public void Awake()
     {
-        Activate();
+        controller = GameObject.FindGameObjectWithTag("GameController");
     }
     public void Activate()
     {
-        controller = GameObject.FindGameObjectWithTag("GameController");
-
         SetCoords();
 
         switch (this.name)
         {
-            case "black_queen": this.GetComponent<SpriteRenderer>().sprite = black_queen; player = "black"; break;
-            case "black_monkey": this.GetComponent<SpriteRenderer>().sprite = black_monkey; player = "black"; break;
-            case "black_elephant": this.GetComponent<SpriteRenderer>().sprite = black_elephant; player = "black"; break;
-            case "black_king": this.GetComponent<SpriteRenderer>().sprite = black_king; player = "black"; break;
-            case "bananaless_black_king": this.GetComponent<SpriteRenderer>().sprite = bananaless_black_king; player = "black"; break;
-            case "black_rook": this.GetComponent<SpriteRenderer>().sprite = black_rook; player = "black"; break;
-            case "black_fishie": this.GetComponent<SpriteRenderer>().sprite = black_fishie; player = "black"; break;
-            case "black_queenfishie": this.GetComponent<SpriteRenderer>().sprite = black_queenfishie; player = "black"; break;
+            case "black_queen(Clone)": this.GetComponent<SpriteRenderer>().sprite = black_queen; player = "black"; break;
+            case "black_monkey(Clone)": this.GetComponent<SpriteRenderer>().sprite = black_monkey; player = "black"; break;
+            case "black_elephant(Clone)": this.GetComponent<SpriteRenderer>().sprite = black_elephant; player = "black"; break;
+            case "black_king(Clone)": this.GetComponent<SpriteRenderer>().sprite = black_king; player = "black"; break;
+            case "bananaless_black_king(Clone)": this.GetComponent<SpriteRenderer>().sprite = bananaless_black_king; player = "black"; break;
+            case "black_rook(Clone)": this.GetComponent<SpriteRenderer>().sprite = black_rook; player = "black"; break;
+            case "black_fishie(Clone)": this.GetComponent<SpriteRenderer>().sprite = black_fishie; player = "black"; break;
+            case "black_queenfishie(Clone)": this.GetComponent<SpriteRenderer>().sprite = black_queenfishie; player = "black"; break;
 
-            case "gray_bear": this.GetComponent<SpriteRenderer>().sprite = gray_bear; player = "gray"; break;
+            case "gray_bear(Clone)": this.GetComponent<SpriteRenderer>().sprite = gray_bear; player = "gray"; break;
 
-            case "white_queen": this.GetComponent<SpriteRenderer>().sprite = white_queen; player = "white"; break;
-            case "white_monkey": this.GetComponent<SpriteRenderer>().sprite = white_monkey; player = "white"; break;
-            case "white_elephant": this.GetComponent<SpriteRenderer>().sprite = white_elephant; player = "white"; break;
-            case "white_king": this.GetComponent<SpriteRenderer>().sprite = white_king; player = "white"; break;
-            case "bananaless_white_king": this.GetComponent<SpriteRenderer>().sprite = bananaless_white_king; player = "white"; break;
-            case "white_rook": this.GetComponent<SpriteRenderer>().sprite = white_rook; player = "white"; break;
-            case "white_fishie": this.GetComponent<SpriteRenderer>().sprite = white_fishie; player = "white"; break;
-            case "white_queenfishie": this.GetComponent<SpriteRenderer>().sprite = white_queenfishie; player = "white"; break;
+            case "white_queen(Clone)": this.GetComponent<SpriteRenderer>().sprite = white_queen; player = "white"; break;
+            case "white_monkey(Clone)": this.GetComponent<SpriteRenderer>().sprite = white_monkey; player = "white"; break;
+            case "white_elephant(Clone)": this.GetComponent<SpriteRenderer>().sprite = white_elephant; player = "white"; break;
+            case "white_king(Clone)": this.GetComponent<SpriteRenderer>().sprite = white_king; player = "white"; break;
+            case "bananaless_white_king(Clone)": this.GetComponent<SpriteRenderer>().sprite = bananaless_white_king; player = "white"; break;
+            case "white_rook(Clone)": this.GetComponent<SpriteRenderer>().sprite = white_rook; player = "white"; break;
+            case "white_fishie(Clone)": this.GetComponent<SpriteRenderer>().sprite = white_fishie; player = "white"; break;
+            case "white_queenfishie(Clone)": this.GetComponent<SpriteRenderer>().sprite = white_queenfishie; player = "white"; break;
         }
     }
 
@@ -85,14 +85,16 @@ public class Chessman : MonoBehaviour
     {
         if (!controller.GetComponent<Game>().IsGameOver() && controller.GetComponent<Game>().GetCurrentPlayer() == player)
         {
-            DestroyMovePlates();
+            base.photonView.RequestOwnership();
 
+            DestroyMovePlates();
             InitiateMovePlates();
         }
         if (player == "gray")
         {
-            DestroyMovePlates();
+            base.photonView.RequestOwnership();
 
+            DestroyMovePlates();
             InitiateMovePlates();
         }
     }
@@ -110,10 +112,10 @@ public class Chessman : MonoBehaviour
     {
         switch (this.name)
         {
-            case "black_queen":
-            case "white_queen":
-            case "black_queenfishie":
-            case "white_queenfishie":
+            case "black_queen(Clone)":
+            case "white_queen(Clone)":
+            case "black_queenfishie(Clone)":
+            case "white_queenfishie(Clone)":
                 LineMovePlate(1, 0);
                 LineMovePlate(0, 1);
                 LineMovePlate(1, 1);
@@ -124,14 +126,14 @@ public class Chessman : MonoBehaviour
                 LineMovePlate(1, -1);
                 break;
 
-            case "black_elephant":
-            case "white_elephant":
+            case "black_elephant(Clone)":
+            case "white_elephant(Clone)":
                 PointMovePlate(xBoard + 2, yBoard + 2);
                 PointMovePlate(xBoard - 2, yBoard - 2);
                 PointMovePlate(xBoard + 2, yBoard - 2);
                 PointMovePlate(xBoard - 2, yBoard + 2);
                 break;
-            case "white_rook":
+            case "white_rook(Clone)":
                 for (int i = 0; i < 8; i++)
                 {
                     RookMovePlate(xBoard - i, yBoard + 0);
@@ -186,7 +188,7 @@ public class Chessman : MonoBehaviour
                     RookAttackPlate(xBoard - 1, yBoard);
                 }
                 break;
-            case "black_rook":
+            case "black_rook(Clone)":
                 for (int i = 0; i < 8; i++)
                 {
                     RookMovePlate(xBoard - i, yBoard + 0);
@@ -243,21 +245,21 @@ public class Chessman : MonoBehaviour
                 }
                 break;
 
-            case "black_king":
-            case "white_king":
-            case "bananaless_black_king":
-            case "bananaless_white_king":
+            case "black_king(Clone)":
+            case "white_king(Clone)":
+            case "bananaless_black_king(Clone)":
+            case "bananaless_white_king(Clone)":
                 SurrondMovePlate();
                 break;
 
-            case "white_fishie":
+            case "white_fishie(Clone)":
                 FishieMovePlate(xBoard, yBoard + 1);
                 FishieMovePlate(xBoard + 1, yBoard + 1);
                 FishieMovePlate(xBoard - 1, yBoard + 1);
                 FishieMovePlate(xBoard + 1, yBoard);
                 FishieMovePlate(xBoard - 1, yBoard);
                 break;
-            case "black_fishie":
+            case "black_fishie(Clone)":
                 FishieMovePlate(xBoard, yBoard - 1);
                 FishieMovePlate(xBoard + 1, yBoard - 1);
                 FishieMovePlate(xBoard - 1, yBoard - 1);
@@ -265,7 +267,7 @@ public class Chessman : MonoBehaviour
                 FishieMovePlate(xBoard - 1, yBoard);
                 break;
 
-            case "black_monkey":
+            case "black_monkey(Clone)":
                 MonkeyMovePlate(xBoard, yBoard);
 
                 if (controller.GetComponent<Game>().PositionOnBoard(xBoard, yBoard + 1))
@@ -336,10 +338,10 @@ public class Chessman : MonoBehaviour
 
                 if (controller.GetComponent<Game>().blackSaveAllowed == true)
                 {
-                    SavePlateCheck("black_monkey", -5.06f, 0.5f);
+                    SavePlateCheck("black_monkey(Clone)", -5.06f, 0.5f);
                 }
                 break;
-            case  "white_monkey":
+            case "white_monkey(Clone)":
                 MonkeyMovePlate(xBoard, yBoard);
 
                 if (controller.GetComponent<Game>().PositionOnBoard(xBoard, yBoard + 1))
@@ -410,11 +412,11 @@ public class Chessman : MonoBehaviour
 
                 if (controller.GetComponent<Game>().whiteSaveAllowed == true)
                 {
-                    SavePlateCheck("white_monkey", 5.09f, -0.5f);
+                    SavePlateCheck("white_monkey(Clone)", 5.09f, -0.5f);
                 }
                 break;
 
-            case "gray_bear":
+            case "gray_bear(Clone)":
                 OnlyMovePlate(xBoard, yBoard + 1);
                 OnlyMovePlate(xBoard, yBoard - 1);
                 OnlyMovePlate(xBoard + 1, yBoard);
@@ -504,11 +506,11 @@ public class Chessman : MonoBehaviour
     public void SavePlateCheck(string piece, float x, float y)
     {
         GameObject chessPieceCheck = null;
-        if (piece == "white_monkey")
+        if (piece == "white_monkey(Clone)")
         {
             chessPieceCheck = controller.GetComponent<Game>().GetPosition(7, 3);
         }
-        if (piece == "black_monkey")
+        if (piece == "black_monkey(Clone)")
         {
             chessPieceCheck = controller.GetComponent<Game>().GetPosition(0, 4);
         }

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Photon.Pun;
 public class MovePlate : MonoBehaviour
 {
     public GameObject controller;
@@ -23,6 +23,8 @@ public class MovePlate : MonoBehaviour
     public AudioClip dink;
     public void Start()
     {
+        controller = GameObject.FindGameObjectWithTag("GameController");
+        board = GameObject.FindGameObjectWithTag("Board");
         if (attack)
         {
             gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 0f, 0f, 1f);
@@ -32,9 +34,6 @@ public class MovePlate : MonoBehaviour
 
     public void OnMouseUp()
     {
-        controller = GameObject.FindGameObjectWithTag("GameController");
-        board = GameObject.FindGameObjectWithTag("Board");
-
         noiseValue = Random.Range(1, 4);
 
         if (noiseValue == 1) { board.GetComponent<AudioSource>().PlayOneShot(dunk, 1); }
@@ -45,53 +44,53 @@ public class MovePlate : MonoBehaviour
         {
             GameObject chessPiece = controller.GetComponent<Game>().GetPosition(matrixX, matrixY);
 
-            if (chessPiece.name == "white_king" || chessPiece.name == "white_queen" || chessPiece.name == "bananaless_white_king") controller.GetComponent<Game>().majorWhitePiecesTaken++;
+            if (chessPiece.name == "white_king(Clone)" || chessPiece.name == "white_queen(Clone)" || chessPiece.name == "bananaless_white_king(Clone)") controller.GetComponent<Game>().majorWhitePiecesTaken++;
 
             if (chessPiece.GetComponent<Chessman>().player == "white")
             {
                 controller.GetComponent<Game>().whitePieceTakenLastTurn = true;
             }
 
-            if (chessPiece.name == "black_king" || chessPiece.name == "black_queen" || chessPiece.name == "bananaless_black_king") controller.GetComponent<Game>().majorBlackPiecesTaken++;
+            if (chessPiece.name == "black_king(Clone)" || chessPiece.name == "black_queen(Clone)" || chessPiece.name == "bananaless_black_king(Clone)") controller.GetComponent<Game>().majorBlackPiecesTaken++;
 
                 if (chessPiece.GetComponent<Chessman>().player == "black")
                 {
                     controller.GetComponent<Game>().blackPieceTakenLastTurn = true;
                 }
-            if (chessPiece.name == "white_king")
+            if (chessPiece.name == "white_king(Clone)")
             {
                 CreateMarker("white_king", 5f, -.5f);
                 controller.GetComponent<Game>().whiteSaveAllowed = true;
             }
-            if (chessPiece.name == "black_king")
+            if (chessPiece.name == "black_king(Clone)")
             {
                 CreateMarker("black_king", -5f, .5f);
                 controller.GetComponent<Game>().blackSaveAllowed = true;
             }
-            if (chessPiece.name == "white_queen")
+            if (chessPiece.name == "white_queen(Clone)")
             {
                 CreateMarker("white_queen", 5f, .5f);
             }
-            if (chessPiece.name == "black_queen")
+            if (chessPiece.name == "black_queen(Clone)")
             {
                 CreateMarker("black_queen", -5f, -.5f);
             }
-            if (chessPiece.name == "bananaless_white_king")
+            if (chessPiece.name == "bananaless_white_king(Clone)")
             {
                 CreateMarker("bananaless_white_king", 5f, -.5f);
                 controller.GetComponent<Game>().whiteSaveAllowed = false;
             }
-            if (chessPiece.name == "bananaless_black_king")
+            if (chessPiece.name == "bananaless_black_king(Clone)")
             {
                 CreateMarker("bananaless_black_king", -5f, .5f);
                 controller.GetComponent<Game>().blackSaveAllowed = false;
             }
-            Destroy(chessPiece);
+            PhotonNetwork.Destroy(chessPiece);
         }
-        if (refrence.name == "StarterBear")
+        if (refrence.name == "StarterBear(Clone)")
         {
             controller.GetComponent<Game>().Create("gray_bear", matrixX, matrixY);
-            Destroy(refrence);
+            PhotonNetwork.Destroy(refrence);
             controller.GetComponent<Game>().NextTurn();
             GameObject[] movePlates = GameObject.FindGameObjectsWithTag("MovePlate");
             for (int i = 0; i < movePlates.Length; i++)
@@ -106,15 +105,15 @@ public class MovePlate : MonoBehaviour
             refrence.GetComponent<Chessman>().SetXBoard(matrixX);
             refrence.GetComponent<Chessman>().SetYBoard(matrixY);
 
-            if (matrixY == 7 && refrence.name == "white_fishie")
+            if (matrixY == 7 && refrence.name == "white_fishie(Clone)")
             {
                 controller.GetComponent<Game>().Create("white_queenfishie", refrence.GetComponent<Chessman>().GetXBoard(), refrence.GetComponent<Chessman>().GetYBoard());
-                Destroy(refrence);
+                PhotonNetwork.Destroy(refrence);
             }
-            if (matrixY == 0 && refrence.name == "black_fishie")
+            if (matrixY == 0 && refrence.name == "black_fishie(Clone)")
             {
                 controller.GetComponent<Game>().Create("black_queenfishie", refrence.GetComponent<Chessman>().GetXBoard(), refrence.GetComponent<Chessman>().GetYBoard());
-                Destroy(refrence);
+                PhotonNetwork.Destroy(refrence);
             }
 
             refrence.GetComponent<Chessman>().SetCoords();
