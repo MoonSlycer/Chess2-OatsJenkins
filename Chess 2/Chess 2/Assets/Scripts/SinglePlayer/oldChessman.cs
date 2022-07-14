@@ -270,61 +270,62 @@ public class  oldChessman : MonoBehaviour
 
             case "black_monkey":
                 MonkeyMovePlate(xBoard, yBoard);
-                MonkeyBoardMovePlate2(xBoard, yBoard);
+                MonkeyMovePlate2(xBoard, yBoard);
+                MonkeyMovePlate3(xBoard, yBoard);
                 if (controller.GetComponent<oldGame>().PositionOnBoard(xBoard, yBoard + 1))
                 {
                     if (controller.GetComponent<oldGame>().GetPosition(xBoard, yBoard + 1) != null && controller.GetComponent<oldGame>().PositionOnBoard(xBoard, yBoard + 2) && controller.GetComponent<oldGame>().GetPosition(xBoard, yBoard + 2) == null)
                     {
-                        MonkeyBoardMovePlate2(xBoard, yBoard + 2);
+                        MonkeyMovePlate3(xBoard, yBoard + 2);
                     }
                 }
                 if (controller.GetComponent<oldGame>().PositionOnBoard(xBoard, yBoard - 1))
                 {
                     if (controller.GetComponent<oldGame>().GetPosition(xBoard, yBoard - 1) != null && controller.GetComponent<oldGame>().PositionOnBoard(xBoard, yBoard - 2) && controller.GetComponent<oldGame>().GetPosition(xBoard, yBoard - 2) == null)
                     {
-                        MonkeyBoardMovePlate2(xBoard, yBoard - 2);
+                        MonkeyMovePlate3(xBoard, yBoard - 2);
                     }
                 }
                 if (controller.GetComponent<oldGame>().PositionOnBoard(xBoard + 1, yBoard))
                 {
                     if (controller.GetComponent<oldGame>().GetPosition(xBoard + 1, yBoard) != null && controller.GetComponent<oldGame>().PositionOnBoard(xBoard + 2, yBoard) && controller.GetComponent<oldGame>().GetPosition(xBoard + 2, yBoard) == null)
                     {
-                        MonkeyBoardMovePlate2(xBoard + 2, yBoard);
+                        MonkeyMovePlate3(xBoard + 2, yBoard);
                     }
                 }
                 if (controller.GetComponent<oldGame>().PositionOnBoard(xBoard - 1, yBoard))
                 {
                     if (controller.GetComponent<oldGame>().GetPosition(xBoard - 1, yBoard) != null && controller.GetComponent<oldGame>().PositionOnBoard(xBoard - 2, yBoard) && controller.GetComponent<oldGame>().GetPosition(xBoard - 2, yBoard) == null)
                     {
-                        MonkeyBoardMovePlate2(xBoard - 2, yBoard);
+                        MonkeyMovePlate3(xBoard - 2, yBoard);
                     }
                 }
                 if (controller.GetComponent<oldGame>().PositionOnBoard(xBoard - 1, yBoard + 1))
                 {
                     if (controller.GetComponent<oldGame>().GetPosition(xBoard - 1, yBoard + 1) != null && controller.GetComponent<oldGame>().PositionOnBoard(xBoard - 2, yBoard + 2) && controller.GetComponent<oldGame>().GetPosition(xBoard - 2, yBoard + 2) == null)
                     {
-                        MonkeyBoardMovePlate2(xBoard - 2, yBoard + 2);
+                        MonkeyMovePlate3(xBoard - 2, yBoard + 2);
                     }
                 }
                 if (controller.GetComponent<oldGame>().PositionOnBoard(xBoard - 1, yBoard - 1))
                 {
                     if (controller.GetComponent<oldGame>().GetPosition(xBoard - 1, yBoard - 1) != null && controller.GetComponent<oldGame>().PositionOnBoard(xBoard - 2, yBoard - 2) && controller.GetComponent<oldGame>().GetPosition(xBoard - 2, yBoard - 2) == null)
                     {
-                        MonkeyBoardMovePlate2(xBoard - 2, yBoard - 2);
+                        MonkeyMovePlate3(xBoard - 2, yBoard - 2);
                     }
                 }
                 if (controller.GetComponent<oldGame>().PositionOnBoard(xBoard + 1, yBoard - 1))
                 {
                     if (controller.GetComponent<oldGame>().GetPosition(xBoard + 1, yBoard - 1) != null && controller.GetComponent<oldGame>().PositionOnBoard(xBoard + 2, yBoard - 2) && controller.GetComponent<oldGame>().GetPosition(xBoard + 2, yBoard - 2) == null)
                     {
-                        MonkeyBoardMovePlate2(xBoard + 2, yBoard - 2);
+                        MonkeyMovePlate3(xBoard + 2, yBoard - 2);
                     }
                 }
                 if (controller.GetComponent<oldGame>().PositionOnBoard(xBoard + 1, yBoard + 1))
                 {
                     if (controller.GetComponent<oldGame>().GetPosition(xBoard + 1, yBoard + 1) != null && controller.GetComponent<oldGame>().PositionOnBoard(xBoard + 2, yBoard + 2) && controller.GetComponent<oldGame>().GetPosition(xBoard + 2, yBoard + 2) == null)
                     {
-                        MonkeyBoardMovePlate2(xBoard + 2, yBoard + 2);
+                        MonkeyMovePlate3(xBoard + 2, yBoard + 2);
                     }
                 }
                 OnlyMovePlate(xBoard, yBoard + 1);
@@ -343,64 +344,64 @@ public class  oldChessman : MonoBehaviour
                 break;
             case  "white_monkey":
                 MonkeyMovePlate(xBoard, yBoard);
-                MonkeyBoardMovePlate2(xBoard, yBoard);
+                MonkeyMovePlate2(xBoard, yBoard);
+                MonkeyMovePlate3(xBoard, yBoard);
                 if (controller.GetComponent<oldGame>().PositionOnBoard(xBoard, yBoard + 1))
                 {
                     if (controller.GetComponent<oldGame>().GetPosition(xBoard, yBoard + 1) != null && controller.GetComponent<oldGame>().PositionOnBoard(xBoard, yBoard + 2) && controller.GetComponent<oldGame>().GetPosition(xBoard, yBoard + 2) == null)
                     {
-                        MonkeyBoardMovePlate2(xBoard, yBoard + 2);
+                        MonkeyMovePlate3(xBoard, yBoard + 2);
                     }
                 }
                 if (controller.GetComponent<oldGame>().PositionOnBoard(xBoard, yBoard - 1))
                 {
                     if (controller.GetComponent<oldGame>().GetPosition(xBoard, yBoard - 1) != null && controller.GetComponent<oldGame>().PositionOnBoard(xBoard, yBoard - 2) && controller.GetComponent<oldGame>().GetPosition(xBoard, yBoard - 2) == null)
                     {
-                        MonkeyBoardMovePlate2(xBoard, yBoard - 2);
+                        MonkeyMovePlate3(xBoard, yBoard - 2);
                     }
                 }
                 if (controller.GetComponent<oldGame>().PositionOnBoard(xBoard + 1, yBoard))
                 {
                     if (controller.GetComponent<oldGame>().GetPosition(xBoard + 1, yBoard) != null && controller.GetComponent<oldGame>().PositionOnBoard(xBoard + 2, yBoard) && controller.GetComponent<oldGame>().GetPosition(xBoard + 2, yBoard) == null)
                     {
-                        MonkeyBoardMovePlate2(xBoard + 2, yBoard);
+                        MonkeyMovePlate3(xBoard + 2, yBoard);
                     }
                 }
                 if (controller.GetComponent<oldGame>().PositionOnBoard(xBoard - 1, yBoard))
                 {
                     if (controller.GetComponent<oldGame>().GetPosition(xBoard - 1, yBoard) != null && controller.GetComponent<oldGame>().PositionOnBoard(xBoard - 2, yBoard) && controller.GetComponent<oldGame>().GetPosition(xBoard - 2, yBoard) == null)
                     {
-                        MonkeyBoardMovePlate2(xBoard - 2, yBoard);
+                        MonkeyMovePlate3(xBoard - 2, yBoard);
                     }
                 }
                 if (controller.GetComponent<oldGame>().PositionOnBoard(xBoard - 1, yBoard + 1))
                 {
                     if (controller.GetComponent<oldGame>().GetPosition(xBoard - 1, yBoard + 1) != null && controller.GetComponent<oldGame>().PositionOnBoard(xBoard - 2, yBoard + 2) && controller.GetComponent<oldGame>().GetPosition(xBoard - 2, yBoard + 2) == null)
                     {
-                        MonkeyBoardMovePlate2(xBoard - 2, yBoard + 2);
+                        MonkeyMovePlate3(xBoard - 2, yBoard + 2);
                     }
                 }
                 if (controller.GetComponent<oldGame>().PositionOnBoard(xBoard - 1, yBoard - 1))
                 {
                     if (controller.GetComponent<oldGame>().GetPosition(xBoard - 1, yBoard - 1) != null && controller.GetComponent<oldGame>().PositionOnBoard(xBoard - 2, yBoard - 2) && controller.GetComponent<oldGame>().GetPosition(xBoard - 2, yBoard - 2) == null)
                     {
-                        MonkeyBoardMovePlate2(xBoard - 2, yBoard - 2);
+                        MonkeyMovePlate3(xBoard - 2, yBoard - 2);
                     }
                 }
                 if (controller.GetComponent<oldGame>().PositionOnBoard(xBoard + 1, yBoard - 1))
                 {
                     if (controller.GetComponent<oldGame>().GetPosition(xBoard + 1, yBoard - 1) != null && controller.GetComponent<oldGame>().PositionOnBoard(xBoard + 2, yBoard - 2) && controller.GetComponent<oldGame>().GetPosition(xBoard + 2, yBoard - 2) == null)
                     {
-                        MonkeyBoardMovePlate2(xBoard + 2, yBoard - 2);
+                        MonkeyMovePlate3(xBoard + 2, yBoard - 2);
                     }
                 }
                 if (controller.GetComponent<oldGame>().PositionOnBoard(xBoard + 1, yBoard + 1))
                 {
                     if (controller.GetComponent<oldGame>().GetPosition(xBoard + 1, yBoard + 1) != null && controller.GetComponent<oldGame>().PositionOnBoard(xBoard + 2, yBoard + 2) && controller.GetComponent<oldGame>().GetPosition(xBoard + 2, yBoard + 2) == null)
                     {
-                        MonkeyBoardMovePlate2(xBoard + 2, yBoard + 2);
+                        MonkeyMovePlate3(xBoard + 2, yBoard + 2);
                     }
                 }
-        
                 OnlyMovePlate(xBoard, yBoard + 1);
                 OnlyMovePlate(xBoard, yBoard - 1);
                 OnlyMovePlate(xBoard + 1, yBoard);
@@ -570,7 +571,66 @@ public class  oldChessman : MonoBehaviour
             }
         }
     }
-    public void MonkeyBoardMovePlate2(int x, int y)
+    public void MonkeyMovePlate3(int x, int y)
+    {
+        if (controller.GetComponent<oldGame>().PositionOnBoard(x, y + 1))
+        {
+            if (controller.GetComponent<oldGame>().GetPosition(x, y + 1) != null && controller.GetComponent<oldGame>().PositionOnBoard(x, y + 2) && controller.GetComponent<oldGame>().GetPosition(x, y + 2) == null)
+            {
+                MonkeyMovePlate2(x, y + 2);
+            }
+        }
+        if (controller.GetComponent<oldGame>().PositionOnBoard(x, y - 1))
+        {
+            if (controller.GetComponent<oldGame>().GetPosition(x, y - 1) != null && controller.GetComponent<oldGame>().PositionOnBoard(x, y - 2) && controller.GetComponent<oldGame>().GetPosition(x, y - 2) == null)
+            {
+                MonkeyMovePlate2(x, y - 2);
+            }
+        }
+        if (controller.GetComponent<oldGame>().PositionOnBoard(x + 1, y))
+        {
+            if (controller.GetComponent<oldGame>().GetPosition(x + 1, y) != null && controller.GetComponent<oldGame>().PositionOnBoard(x + 2, y) && controller.GetComponent<oldGame>().GetPosition(x + 2, y) == null)
+            {
+                MonkeyMovePlate2(x + 2, y);
+            }
+        }
+        if (controller.GetComponent<oldGame>().PositionOnBoard(x - 1, y))
+        {
+            if (controller.GetComponent<oldGame>().GetPosition(x - 1, y) != null && controller.GetComponent<oldGame>().PositionOnBoard(x - 2, y) && controller.GetComponent<oldGame>().GetPosition(x - 2, y) == null)
+            {
+                MonkeyMovePlate2(x - 2, y);
+            }
+        }
+        if (controller.GetComponent<oldGame>().PositionOnBoard(x - 1, y + 1))
+        {
+            if (controller.GetComponent<oldGame>().GetPosition(x - 1, y + 1) != null && controller.GetComponent<oldGame>().PositionOnBoard(x - 2, y + 2) && controller.GetComponent<oldGame>().GetPosition(x - 2, y + 2) == null)
+            {
+                MonkeyMovePlate2(x - 2, y + 2);
+            }
+        }
+        if (controller.GetComponent<oldGame>().PositionOnBoard(x - 1, y - 1))
+        {
+            if (controller.GetComponent<oldGame>().GetPosition(x - 1, y - 1) != null && controller.GetComponent<oldGame>().PositionOnBoard(x - 2, y - 2) && controller.GetComponent<oldGame>().GetPosition(x - 2, y - 2) == null)
+            {
+                MonkeyMovePlate2(x - 2, y - 2);
+            }
+        }
+        if (controller.GetComponent<oldGame>().PositionOnBoard(x + 1, y - 1))
+        {
+            if (controller.GetComponent<oldGame>().GetPosition(x + 1, y - 1) != null && controller.GetComponent<oldGame>().PositionOnBoard(x + 2, y - 2) && controller.GetComponent<oldGame>().GetPosition(x + 2, y - 2) == null)
+            {
+                MonkeyMovePlate2(x + 2, y - 2);
+            }
+        }
+        if (controller.GetComponent<oldGame>().PositionOnBoard(x + 1, y + 1))
+        {
+            if (controller.GetComponent<oldGame>().GetPosition(x + 1, y + 1) != null && controller.GetComponent<oldGame>().PositionOnBoard(x + 2, y + 2) && controller.GetComponent<oldGame>().GetPosition(x + 2, y + 2) == null)
+            {
+                MonkeyMovePlate2(x + 2, y + 2);
+            }
+        }
+    }
+    public void MonkeyMovePlate2(int x, int y)
     {
         if (controller.GetComponent<oldGame>().PositionOnBoard(x, y + 1))
         {
