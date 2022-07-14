@@ -116,14 +116,28 @@ public class oldGame : MonoBehaviour
     {
         if (currentPlayer == "white")
         {
-            camera.Play("Base Layer.Rotate", 0, 0);
+            if (Options.staticToggleBoardAnim == true)
+            {
+                camera.Play("Base Layer.Rotate", 0, 0);
+            }
+            else
+            {
+                camera.Play("Base Layer.Rotate", 0, 1);
+            }
             currentPlayer = "black";
             image.sprite = black;
             whitePieceTakenLastTurn = false;
         }
         else
         {
-            camera.Play("Base Layer.RotateBack", 0, 0);
+            if (Options.staticToggleBoardAnim == true)
+            {
+                camera.Play("Base Layer.RotateBack", 0, 0);
+            }
+            else
+            {
+                camera.Play("Base Layer.RotateBack", 0, 1);
+            }
             currentPlayer = "white";
             image.sprite = white;
             blackPieceTakenLastTurn = false;

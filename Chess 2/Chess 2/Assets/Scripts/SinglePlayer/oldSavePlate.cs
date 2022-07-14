@@ -20,9 +20,9 @@ public class oldSavePlate : MonoBehaviour
 
         noiseValue = Random.Range(1, 4);
 
-        if (noiseValue == 1) { board.GetComponent<AudioSource>().PlayOneShot(dunk, 1); }
-        if (noiseValue == 2) { board.GetComponent<AudioSource>().PlayOneShot(donk, 1); }
-        if (noiseValue == 3) { board.GetComponent<AudioSource>().PlayOneShot(dink, 1); }
+        if (noiseValue == 1) { board.GetComponent<AudioSource>().PlayOneShot(dunk, Options.staticVolume); }
+        if (noiseValue == 2) { board.GetComponent<AudioSource>().PlayOneShot(donk, Options.staticVolume); }
+        if (noiseValue == 3) { board.GetComponent<AudioSource>().PlayOneShot(dink, Options.staticVolume); }
 
         if (transform.position == new Vector3(-5.06f, 0.5f, transform.position.z))
         {

@@ -10,6 +10,10 @@ public class Buttons : MonoBehaviour
     }
     public void MultiPlayer()
     {
-        SceneManager.LoadScene("Loading");
+        SceneManager.LoadScene("WORK IN PROGRESS");
+    }
+    public void Options()
+    {
+        SceneManager.LoadScene("Options");
     }
 }
