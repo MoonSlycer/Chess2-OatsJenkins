@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class Chessman : MonoBehaviourPun
+public class Chessman : MonoBehaviourPun, IPunObservable
 {
     public GameObject controller;
     public GameObject movePlate;
@@ -21,6 +21,7 @@ public class Chessman : MonoBehaviourPun
     public void Awake()
     {
         controller = GameObject.FindGameObjectWithTag("GameController");
+        Activate();
     }
     public void Activate()
     {
@@ -80,7 +81,23 @@ public class Chessman : MonoBehaviourPun
     {
         yBoard = y;
     }
-
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(xBoard);
+            Debug.Log("xBoard Sent!");
+            stream.SendNext(yBoard);
+            Debug.Log("yBoard Sent!");
+        }
+        else if (stream.IsReading)
+        {
+            xBoard = (int)stream.ReceiveNext();
+            Debug.Log("xBoard Received!");
+            yBoard = (int)stream.ReceiveNext();
+            Debug.Log("yBoard Received!");
+        }
+    }
     private void OnMouseUp()
     {
         if (!controller.GetComponent<Game>().IsGameOver() && controller.GetComponent<Game>().GetCurrentPlayer() == player)

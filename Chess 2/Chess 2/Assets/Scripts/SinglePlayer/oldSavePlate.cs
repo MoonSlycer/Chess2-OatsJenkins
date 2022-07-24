@@ -28,14 +28,14 @@ public class oldSavePlate : MonoBehaviour
         {
             Destroy(GameObject.Find("black_king"));
             controller.GetComponent<oldGame>().blackSaveAllowed = false;
-            controller.GetComponent<oldGame>().Create("bananaless_black_king", 1, 4);
+            controller.GetComponent<oldGame>().SetPosition(controller.GetComponent<oldGame>().Create("bananaless_black_king", 1, 4));
             controller.GetComponent<oldGame>().majorBlackPiecesTaken--;
         }
         if (transform.position == new Vector3(5.09f, -0.5f, transform.position.z))
         {
             Destroy(GameObject.Find("white_king"));
             controller.GetComponent<oldGame>().whiteSaveAllowed = false;
-            controller.GetComponent<oldGame>().Create("bananaless_white_king", 6, 3);
+            controller.GetComponent<oldGame>().SetPosition(controller.GetComponent<oldGame>().Create("bananaless_white_king", 6, 3));
             controller.GetComponent<oldGame>().majorWhitePiecesTaken--;
         }
 

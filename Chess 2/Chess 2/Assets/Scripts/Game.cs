@@ -46,7 +46,9 @@ public class Game : MonoBehaviourPun
                 Create("white_fishie",6,1), Create("white_fishie",7,1),
 
             };
+
             PhotonNetwork.InstantiateRoomObject("StarterBear", new Vector3(0, 0, -1), Quaternion.identity);
+
             playerBlack = new GameObject[]
             {
                 Create("black_rook",0,7), Create("black_monkey",1,7),

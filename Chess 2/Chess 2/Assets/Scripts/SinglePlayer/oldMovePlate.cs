@@ -89,7 +89,7 @@ public class oldMovePlate : MonoBehaviour
         }
         if (refrence.name == "oldStarterBear(Clone)")
         {
-            controller.GetComponent<oldGame>().Create("gray_bear", matrixX, matrixY);
+            controller.GetComponent<oldGame>().SetPosition(controller.GetComponent<oldGame>().Create("gray_bear", matrixX, matrixY));
              Destroy(refrence);
             controller.GetComponent<oldGame>().NextTurn();
             GameObject[] movePlates = GameObject.FindGameObjectsWithTag("MovePlate");
@@ -107,12 +107,12 @@ public class oldMovePlate : MonoBehaviour
 
             if (matrixY == 7 && refrence.name == "white_fishie")
             {
-                controller.GetComponent<oldGame>().Create("white_queenfishie", refrence.GetComponent<oldChessman>().GetXBoard(), refrence.GetComponent<oldChessman>().GetYBoard());
+                controller.GetComponent<oldGame>().SetPosition(controller.GetComponent<oldGame>().Create("white_queenfishie", refrence.GetComponent<oldChessman>().GetXBoard(), refrence.GetComponent<oldChessman>().GetYBoard()));
                  Destroy(refrence);
             }
             if (matrixY == 0 && refrence.name == "black_fishie")
             {
-                controller.GetComponent<oldGame>().Create("black_queenfishie", refrence.GetComponent<oldChessman>().GetXBoard(), refrence.GetComponent<oldChessman>().GetYBoard());
+                controller.GetComponent<oldGame>().SetPosition(controller.GetComponent<oldGame>().Create("black_queenfishie", refrence.GetComponent<oldChessman>().GetXBoard(), refrence.GetComponent<oldChessman>().GetYBoard()));
                  Destroy(refrence);
             }
 
