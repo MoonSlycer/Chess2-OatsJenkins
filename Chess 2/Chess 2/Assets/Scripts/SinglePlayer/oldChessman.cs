@@ -17,6 +17,7 @@ public class  oldChessman : MonoBehaviour
     public Sprite black_queen, black_monkey, black_elephant, black_king, bananaless_black_king, black_rook, black_fishie, black_queenfishie;
     public Sprite white_queen, white_monkey, white_elephant, white_king, bananaless_white_king, white_rook, white_fishie, white_queenfishie;
     public Sprite gray_bear;
+    public Sprite white_bird, black_bird;
     public void Start()
     {
         Activate();
@@ -36,7 +37,7 @@ public class  oldChessman : MonoBehaviour
             case "black_elephant": this.GetComponent<SpriteRenderer>().sprite = black_elephant; player = "black"; break;
             case "black_king": this.GetComponent<SpriteRenderer>().sprite = black_king; player = "black"; break;
             case "bananaless_black_king": this.GetComponent<SpriteRenderer>().sprite = bananaless_black_king; player = "black"; break;
-            case "black_rook": this.GetComponent<SpriteRenderer>().sprite = black_rook; player = "black"; break;
+            case "black_rook": if (Buttons.egyptMode == true) { this.GetComponent<SpriteRenderer>().sprite = black_bird; } if (Buttons.egyptMode == false) { this.GetComponent<SpriteRenderer>().sprite = black_rook; } player = "black"; break;
             case "black_fishie": this.GetComponent<SpriteRenderer>().sprite = black_fishie; player = "black"; break;
             case "black_queenfishie": this.GetComponent<SpriteRenderer>().sprite = black_queenfishie; player = "black"; break;
 
@@ -47,7 +48,7 @@ public class  oldChessman : MonoBehaviour
             case "white_elephant": this.GetComponent<SpriteRenderer>().sprite = white_elephant; player = "white"; break;
             case "white_king": this.GetComponent<SpriteRenderer>().sprite = white_king; player = "white"; break;
             case "bananaless_white_king": this.GetComponent<SpriteRenderer>().sprite = bananaless_white_king; player = "white"; break;
-            case "white_rook": this.GetComponent<SpriteRenderer>().sprite = white_rook; player = "white"; break;
+            case "white_rook": if (Buttons.egyptMode == true) {this.GetComponent<SpriteRenderer>().sprite = white_bird;} if(Buttons.egyptMode == false) {this.GetComponent<SpriteRenderer>().sprite = white_rook;} player = "white"; break;
             case "white_fishie": this.GetComponent<SpriteRenderer>().sprite = white_fishie; player = "white"; break;
             case "white_queenfishie": this.GetComponent<SpriteRenderer>().sprite = white_queenfishie; player = "white"; break;
         }
@@ -507,16 +508,19 @@ public class  oldChessman : MonoBehaviour
     public void SavePlateCheck(string piece, float x, float y)
     {
         GameObject chessPieceCheck = null;
+        GameObject freeSpaceCheck = null;
         if (piece == "white_monkey")
         {
             chessPieceCheck = controller.GetComponent<oldGame>().GetPosition(7, 3);
+            freeSpaceCheck = controller.GetComponent<oldGame>().GetPosition(6, 3);
         }
         if (piece == "black_monkey")
         {
             chessPieceCheck = controller.GetComponent<oldGame>().GetPosition(0, 4);
+            freeSpaceCheck = controller.GetComponent<oldGame>().GetPosition(1, 4);
         }
 
-        if (chessPieceCheck != null)
+        if (chessPieceCheck != null && freeSpaceCheck == null)
         {
             if (chessPieceCheck.name == piece)
             {

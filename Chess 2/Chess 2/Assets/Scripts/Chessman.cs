@@ -18,6 +18,23 @@ public class Chessman : MonoBehaviourPun, IPunObservable
     public Sprite white_queen, white_monkey, white_elephant, white_king, bananaless_white_king, white_rook, white_fishie, white_queenfishie;
     public Sprite gray_bear;
 
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(xBoard);
+            Debug.Log("xBoard Sent!");
+            stream.SendNext(yBoard);
+            Debug.Log("yBoard Sent!");
+        }
+        else if (stream.IsReading)
+        {
+            xBoard = (int)stream.ReceiveNext();
+            Debug.Log("xBoard Received!");
+            yBoard = (int)stream.ReceiveNext();
+            Debug.Log("yBoard Received!");
+        }
+    }
     public void Awake()
     {
         controller = GameObject.FindGameObjectWithTag("GameController");
@@ -80,23 +97,6 @@ public class Chessman : MonoBehaviourPun, IPunObservable
     public void SetYBoard(int y)
     {
         yBoard = y;
-    }
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        if (stream.IsWriting)
-        {
-            stream.SendNext(xBoard);
-            Debug.Log("xBoard Sent!");
-            stream.SendNext(yBoard);
-            Debug.Log("yBoard Sent!");
-        }
-        else if (stream.IsReading)
-        {
-            xBoard = (int)stream.ReceiveNext();
-            Debug.Log("xBoard Received!");
-            yBoard = (int)stream.ReceiveNext();
-            Debug.Log("yBoard Received!");
-        }
     }
     private void OnMouseUp()
     {

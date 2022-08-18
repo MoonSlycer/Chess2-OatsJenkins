@@ -147,3 +147,5 @@ MonoBehaviour:
   white_fishie: {fileID: 746690782, guid: 1d1061dd6114642f0842de7b236e187c, type: 3}
   white_queenfishie: {fileID: 1942401116, guid: 1d1061dd6114642f0842de7b236e187c, type: 3}
   gray_bear: {fileID: 21300000, guid: 47fe6b99e60804dd2b5f0ddcf18cbbcc, type: 3}
+  white_bird: {fileID: 21300000, guid: b014ada7d184f49bc906710f6c2db10b, type: 3}
+  black_bird: {fileID: 21300000, guid: 625b38502d7624f1fbc80c64feb3eb38, type: 3}
