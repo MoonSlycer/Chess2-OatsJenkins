@@ -19,7 +19,6 @@ public class oldGame : MonoBehaviour
     private bool gameOver = false;
 
     public Image image;
-    public Image button;
 
     public int majorWhitePiecesTaken = 0;
     public int majorBlackPiecesTaken = 0;
@@ -146,10 +145,6 @@ public class oldGame : MonoBehaviour
 
     public void Update()
     {
-        if (gameOver == true)
-        {
-            button.enabled = true;
-        }
         if (majorWhitePiecesTaken == 2) Winner("black");
         if (majorBlackPiecesTaken == 2) Winner("white");
     }
